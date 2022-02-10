@@ -6,6 +6,7 @@ import Home from "../screens/Home";
 
 
 import { Icon } from "react-native-elements";
+import Creditos from "../screens/Creditos";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,22 +19,22 @@ export default function Navigation() {
         <Tab.Screen
           name="home"
           component={Home}
-          options={{ title: "LA CAROLINA", tabBarIcon: ({color, size}) => {
-            return <Icon type="material-community" size={size} color={color} name="volume-high"></Icon>
+          options={{ title: "Audios", tabBarActiveBackgroundColor:"#f4f0d4",tabBarInactiveBackgroundColor:"#f4f0d4", tabBarActiveTintColor:"orange", tabBarInactiveTintColor:"#666f2d", tabBarIcon: ({color, size}) => {
+            return <Icon type="material-community" size={size} color={"#666f2d"} name="volume-high"></Icon>
           }, headerShown: false }}
         />
         <Tab.Screen
           name="mapa"
           component={Mapas}
-          options={{ title: "Mapa", tabBarIcon: ({color, size}) => {
-            return <Icon type="material-community" size={size} color={color} name="map-marker"></Icon>
+          options={{ title: "Mapa", tabBarActiveBackgroundColor:"#f4f0d4",tabBarInactiveBackgroundColor:"#f4f0d4", tabBarActiveTintColor:"orange", tabBarInactiveTintColor:"#666f2d", tabBarIcon: ({color, size}) => {
+            return <Icon type="material-community" size={size} color={"#666f2d"} name="map-marker"></Icon>
           }, headerShown: false }}
         />
         <Tab.Screen
           name="Créditos"
-          component={Home} 
-          options={{ title: "Créditos", tabBarIcon: ({color, size}) => {
-            return <Icon type="material-community" size={size} color={color} name="headset"></Icon>
+          component={Creditos} 
+          options={{ title: "Créditos", tabBarActiveBackgroundColor:"#f4f0d4",tabBarInactiveBackgroundColor:"#f4f0d4", tabBarActiveTintColor:"orange", tabBarInactiveTintColor:"#666f2d", tabBarIcon: ({color, size}) => {
+            return <Icon type="material-community" size={size} color={"#666f2d"} name="comment-text-outline"></Icon>
           }, headerShown: false }}
         />
       </Tab.Navigator>

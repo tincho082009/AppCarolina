@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import {View, Text, Pressable} from 'react-native';
+import {View, Text, Pressable, StyleSheet} from 'react-native';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
 import { Video, Audio } from 'expo-av';
 import Slider from "@react-native-community/slider";
@@ -148,12 +148,15 @@ export default function Player(props){
           />
           <Pressable onPress={() => _onPlayPausePressed()} style={styles.playButton}  disabled={isLoading}>
               {isPlaying
-              ? <MaterialIcons name="pause" size={30} color="black" />
-              : <Entypo name="controller-play" size={30} color="black" />
+              ? <MaterialIcons name="pause" size={30} color="#666f2d" />
+              : <Entypo name="controller-play" size={30} color="#666f2d" />
               }
           </Pressable>
           <Slider
-          style={styles.slider}
+            thumbTintColor="#666f2d"
+            maximumTrackTintColor="#666f2d"
+            minimumTrackTintColor="#666f2d"
+            style={styles.slider}
               value={_getSeekSliderPosition()}
               onValueChange={() => _onSeekSliderValueChange()}
               onSlidingComplete={(value) => _onSeekSliderSlidingComplete(value)}
@@ -162,10 +165,7 @@ export default function Player(props){
       </View>
       <View style={styles.timestampRow}>
           <Text
-          style={[
-              styles.text,
-              styles.timestamp
-          ]}
+          style={styles.text}
           >
           {_getTimestamp()}
           </Text>
@@ -174,9 +174,8 @@ export default function Player(props){
     );
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
-      marginTop: 20,
       flex: 0,
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -191,7 +190,7 @@ const styles = {
       justifyContent: 'center',
       alignItems: 'center',
       paddingRight: 20,
-      zIndex: 2
+      zIndex: 5
     },
     slider: {
       flex: 8,
@@ -207,12 +206,11 @@ const styles = {
         minHeight: 14
       },
       text: {
-        color: "white",
-        fontSize: 14,
-        minHeight: 14
+        color: "#666f2d",
+        fontSize: 12
       },
     audioElement: {
         height: 0,
         width: 0,
     }
-};
+});

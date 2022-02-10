@@ -5,31 +5,50 @@ import ImageViewer from 'react-native-image-zoom-viewer';
 import Player from "./Player";
 
 export default function AudioSlider(props){
-    const {audio, nombre, imagenes, descripcion} = props;
+    const {audio, colorStyle} = props;
     const [visible, setVisible] = useState(false);
     const [type, setType] = useState("");
+    const [textCpy, setTextCpy] = useState("");
+    const [nombreImagen, setNombreImagen] = useState("");
+    const [currentFont, setCurrentFont] = useState(18);
 
     const makeVisible = (type) => {
         setType(type)
         setVisible(true);
     }
 
+    const changeViewer = (index) => {
+        setNombreImagen(audio.infoImagenes[index].nombreFoto)
+        setTextCpy(audio.infoImagenes[index].fotografo)
+    }
+
+    useEffect(() => {
+        setNombreImagen(audio.infoImagenes[0].nombreFoto)
+        setTextCpy(audio.infoImagenes[0].fotografo)
+    }, [visible])
+
     return (
         <>
         <Modal visible={visible} transparent={false} animationType="slide" onRequestClose={() => { setVisible(false)}} >                    
             {
                 type == "images" ?
-                    <ImageViewer enableSwipeDown={true} onSwipeDown={()=> setVisible(false)} imageUrls={imagenes}/>
-                :
+                    <>
+                        <ImageViewer onChange={(index) => changeViewer(index)} enableSwipeDown={true} onSwipeDown={()=> setVisible(false)} imageUrls={audio.imagenes}/>
+                        <View style={{position:"absolute",alignSelf:"center", bottom: 50}}>
+                            <Text style={{color:"white", fontFamily:"LemonMilk",  fontSize:22, textAlign:"center", paddingBottom: 20}}>{nombreImagen}</Text>
+                            <Text style={{color:"white", fontFamily:"LemonMilk", fontSize:6, textAlign:"center"}}>{textCpy}</Text>
+                        </View>
+                    </>
+                    :
                     <View style={styles.centeredView}>
                         <ScrollView style={styles.modalBody} 
                         contentContainerStyle={{alignItems: 'center'}}>
                             <View style={styles.textContainer}>
                                 <Text style={styles.textTitle}>
-                                    {nombre}
+                                    {audio.nombre}
                                 </Text>
                                 <Text style={styles.textBody}>
-                                    {descripcion}
+                                    {audio.descripcion}
                                 </Text>
                             </View>
                         </ScrollView>
@@ -41,26 +60,35 @@ export default function AudioSlider(props){
                 </Pressable>
             </View>
         </Modal>
-        <View style={styles.mainContainer}>
-            <View style={styles.headerContainer}> 
-                <View style={styles.headerTitle}>
-                    <Text style={styles.headerText}>
-                        {nombre}
+        <View style={[styles.mainContainer, {backgroundColor: colorStyle}]}>
+            <View style={colorStyle === "#f4f0d4" ? {borderWidth: 5, borderColor:"#666f2d", flexDirection:"row", padding: 5} : {borderWidth: 5, borderColor:"#f4f0d4", flexDirection:"row", padding: 5}}>
+                <View style={{justifyContent:"center"}} >
+                    <Icon size={35} style={{backgroundColor:"#fe9901", borderRadius: 20, padding: 2}} type="material-community" color={colorStyle == "#f4f0d4" ? "#666f2d" : colorStyle == "#d8b041"? "#573d00": "#f4f0d4"} name="volume-high" />
+                </View>
+                <View style={{flexDirection: "column", justifyContent:"center", width: "78%"}}>
+                    <Text adjustsFontSizeToFit style={[styles.headerText, colorStyle == "#d8b041" ? {color: "#f4f0d4"} : {color: "#fe9901"}, {fontSize: currentFont}]}
+                    onTextLayout={ (e) => {
+                        const { lines } = e.nativeEvent;
+                        if (lines.length > 1) {
+                          setCurrentFont(currentFont - 1);
+                        }
+                      } 
+                    }>
+                        {audio.nombre}
                     </Text>
+                    <Player track={audio.audio} />
                 </View>
-                <View style={styles.headerButtons}>
+                <View style={{flexDirection: "column", justifyContent:"center"}}>
+                    <Pressable onPress={() => makeVisible("text")} style={{paddingBottom: 10}}>
+                        <Icon name="text-search" type="material-community" color="#666f2d" ></Icon>
+                    </Pressable>
                     <Pressable onPress={() => makeVisible("images")}>
-                        <Icon  name="image" type="material-community" color="#EDBB99" ></Icon>
-                    </Pressable>
-                    <Pressable style={{marginLeft: 20}} onPress={() => makeVisible("text")}>
-                        <Icon name="format-list-bulleted" type="material-community" color="#EDBB99" ></Icon>
+                        <Icon  name="image" type="material-community" color="#fe9901" ></Icon>
                     </Pressable>
                 </View>
-            </View>
-            <View>
-                <Player track={audio} />    
-            </View>
+            </View>    
         </View>
+        
         <View style={styles.separator}/>
         
         </>
@@ -68,14 +96,14 @@ export default function AudioSlider(props){
 }
 
 const styles = StyleSheet.create({
-    mainContainer:{
+    mainContainer: {
         flex: 0,
+        borderRadius: 10,
         marginTop: 10,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'stretch',
-        paddingLeft: 8,
-        paddingRight: 8,
+        padding: 6,
+        width:"95%",
+        flexDirection: "column", 
+        alignContent: "space-between"
     },
     headerContainer:{
         flexDirection: "row", 
@@ -91,9 +119,10 @@ const styles = StyleSheet.create({
         flex: 1
     },
     headerText:{
-        color: "#EDBB99", 
-        fontSize: 20, 
-        marginLeft: 10
+        fontFamily: "LemonMilk",
+        fontSize: 17, 
+        marginLeft: 10,
+        letterSpacing: 1
     },
     headerButtons:{
         marginRight: 10, 
@@ -123,7 +152,7 @@ const styles = StyleSheet.create({
     },
     modalBody:{
         flex: 1, 
-        backgroundColor: '#424949', 
+        backgroundColor: '#666f2d', 
         borderRadius: 20, 
         width:"95%", 
         height:"95%", 
@@ -135,19 +164,22 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         alignItems: 'center', 
-        padding: 35
+        padding: 25
     },
     textTitle: {
-        fontSize: 25, 
+        color: "whitesmoke",
+        fontSize: 22, 
         paddingBottom: 20, 
-        textDecorationLine: "underline"
+        textDecorationLine: "underline",
+        fontFamily: "LemonMilk"
     },
     textBody: {
-        fontSize: 22, 
-        textAlign: "center"
+        color: "whitesmoke",
+        fontSize: 20, 
+        textAlign: "center",
+        fontFamily: "LemonMilk"
     },
     separator:{
-        backgroundColor: "#333", 
         width:"100%", 
         opacity: 0.3, 
         height: 0.5, 

@@ -4,9 +4,9 @@
     "slug": "AppCarolina",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/IsologoAppLaCarolina.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/IsologoAppLaCarolina.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,17 +17,18 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.agustinbascu.AppCarolina",
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/IsologoAppLaCarolina.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.agustinbascu.AppCarolina"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/IsologoAppLaCarolina.png"
     }
   }
 }
