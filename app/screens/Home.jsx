@@ -63,7 +63,7 @@ export default function Home(props) {
             <Text adjustsFontSizeToFit style={[styles.text, {textAlign: 'left', fontSize: 45}]}>Hola!</Text>
             <Text /><Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30}]}>desde la,</Text>
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:40, color:"#fe9901"}]}>Municipalidad</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:33, color:"#fe9901"}]}>Municipalidad</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:38, color:"#666f2d"}]}>de la Carolina</Text>
             <Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30}]}>les damos la</Text>
@@ -72,13 +72,13 @@ export default function Home(props) {
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30}]}>e invitamos a este</Text>
             <Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:40, color:"#666f2d"}]}> recorrido</Text>
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:42, color:"#fe9901"}]}>paisajístico,</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30, color:"#fe9901"}]}>paisajístico,</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:40}]}>histórico</Text>
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:45, color:"#666f2d"}]}>y cultural. </Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:38, color:"#666f2d"}]}>y cultural. </Text>
             <Text />
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:28}]}>Vamos a conocer qué</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:25}]}>Vamos a conocer qué</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:35, color:"#fe9901"}]}>actividades</Text>
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:40, color:"#666f2d"}]}>podés realizar</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:28, color:"#666f2d"}]}>podés realizar</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:39}]}>en la zona</Text>
             <Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:41, color:"#fe9901"}]}>su flora</Text>
@@ -98,16 +98,16 @@ export default function Home(props) {
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:39, color:"#fe9901"}]}>el audio</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:25, color:"#666f2d"}]}>que se corresponde con la</Text>
             <Text />
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:38}]}>señalización vial</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:34}]}>señalización vial</Text>
             <Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:28, color:"#fe9901"}]}>y apretando el ícono de</Text>
             <Text />
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:42, color:"#666f2d"}]}>“detalles” o mapa</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:38, color:"#666f2d"}]}>“detalles” o mapa</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30, color:"#666f2d"}]}>recorrer las imágenes</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:37}]}>y los textos</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:28, color:"#fe9901"}]}>que acompañan los audios.</Text>
             <Text />
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:38, color:"#666f2d"}]}>Debido a la afluencia</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:35, color:"#666f2d"}]}>Debido a la afluencia</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:25}]}>considerablemente mayor</Text>
             <Text/>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:34, color:"#fe9901"}]}>de visitantes desde</Text>

@@ -31,11 +31,22 @@ export default function Creditos() {
                         Locutor (Don Ignacio):{"\n"}
                         Sergio Barroso{"\n"}{"\n"}
 
+                        Versión portuguesa:{"\n"}
+                        Locución y traducción:{"\n"}
+                        Lic. Ana Terra Leme{"\n"}{"\n"}
+
+                        Versión inglesa:{"\n"}
+                        Locución y traducción:{"\n"}
+                        Prof. Claire Gregory{"\n"}{"\n"}
+
                         Programación de App:{"\n"}
                         Agustín Ezequiel Bascuñan{"\n"}{"\n"}
 
                         Diseño Gráfico:{"\n"}
                         Lola Raffo{"\n"}{"\n"}
+
+                        Diseño de mapa:{"\n"}
+                        Sebastián Pérez{"\n"}{"\n"}
 
                         Fotos:{"\n"}
                         Marisa Vázquez y otros{"\n"}
@@ -45,9 +56,12 @@ export default function Creditos() {
                         Walter Quiroga{"\n"}{"\n"}
 
                         Música Original:{"\n"}
-                        Gato cuyano - Volador: Abel Taborda y Diego Milá{"\n"}
-                        Tonada - De tus entrañas: Abel Taborda{"\n"}
-                        Vals cuyano, el minero: Diego Milá{"\n"}
+                        Gato cuyano - Volador:{"\n"}
+                         Abel Taborda y Diego Milá{"\n"}
+                        Tonada - De tus entrañas: {"\n"}
+                        Abel Taborda{"\n"}
+                        Vals cuyano, el minero:{"\n"}
+                         Diego Milá{"\n"}
                         vías: Diego Milá{"\n"}
                         Belleza natural: Diego Milá{"\n"}
                         Desierto: Diego Milá{"\n"}{"\n"}
@@ -55,24 +69,31 @@ export default function Creditos() {
                         Diseño de sonido:{"\n"}
                         García Milá - Mussano{"\n"}{"\n"}
 
+                        Grabación versión portuguesa{"\n"}
+                        Lic. Marcelo Fabian Martinez{"\n"}{"\n"}
+
                         Locuciones en La Capilla:{"\n"}
                         Juanita: Aitana Luz García Milá{"\n"}
                         María: Binta García Milá{"\n"}{"\n"}
 
-                        Poema en La Escalerilla:{"\n"}
-                        Pancanta: de Hernesto Mussano{"\n"}{"\n"}
+                        Poema en "El valle":{"\n"}
+                        de Hernesto Mussano{"\n"}{"\n"}
 
                         Texto La Capilla{"\n"}
                         Grandi-Mussano{"\n"}{"\n"}
 
-                        Textos: La Negra libre y Mina de Oro{"\n"}
+                        Textos: La Negra libre{"\n"}
+                         y Mina de Oro{"\n"}
                         Hernesto Mussano{"\n"}{"\n"}
-
-                        Aportaron contenidos para esta audioguía:{"\n"}
-                        Guía y técnico en Turismo: Pablo Alejandro Jolivot{"\n"}
-                        Guía y técnico en Turismo: Roxana Lucero Zabala{"\n"}
-                        Guía de Turismo: Sergio Ratto{"\n"}
-                        Lic. María Valeria Velasco Videla{"\n"}
+                        {"\n"}
+                        Aportaron contenidos {"\n"}
+                        para esta audioguía:{"\n"}{"\n"}
+                        Guía y técnico en Turismo:{"\n"}
+                        Pablo Alejandro Jolivot{"\n"}{"\n"}
+                        Guía y técnico en Turismo:{"\n"}
+                         Roxana Lucero Zabala{"\n"}{"\n"}
+                        Guía de Turismo: Sergio Ratto{"\n"}{"\n"}
+                        Lic. María Valeria Velasco Videla{"\n"}{"\n"}
                         Municipalidad de la Carolina
                     </Text>
                 </ScrollView>

@@ -6,7 +6,7 @@ import { Icon} from "react-native-elements";
 const images = [{
     url: '',
     props: {
-        source: require('../../assets/FolletoLaCarolinaMapa.jpg')
+        source: require('../../assets/Mapa.jpg')
     }
 }]
 
@@ -48,7 +48,7 @@ export default function Mapas() {
                     <Pressable onPress={()=>setModalVisible(!modalVisible)} style={styles.containerImage}>
                         <Image
                         style={styles.image}
-                        source={require('../../assets/FolletoLaCarolinaMapa.jpg')}
+                        source={require('../../assets/Mapa.jpg')}
                         />
                     </Pressable>
                 </ScrollView>

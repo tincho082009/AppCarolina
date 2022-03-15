@@ -2,11 +2,11 @@
   "expo": {
     "name": "AppCarolina",
     "slug": "AppCarolina",
-    "version": "1.0.0",
+    "version": "2.00",
     "orientation": "portrait",
     "icon": "./assets/IsologoAppLaCarolina.png",
     "splash": {
-      "image": "./assets/IsologoAppLaCarolina.png",
+      "image": "./assets/splashApp.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,6 +21,7 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/IsologoAppLaCarolina.png",
         "backgroundColor": "#FFFFFF"

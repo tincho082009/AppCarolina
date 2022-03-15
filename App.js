@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Navigations from "./app/navigations/Navigation";
 import AppLoading from 'expo-app-loading';
+import { View } from "react-native";
 import { useFonts } from 'expo-font';
 
 export default function App() {
@@ -9,7 +10,7 @@ export default function App() {
   });
 
   if (!loaded) {
-    return <AppLoading />;
+    return <View />;
   } else {
     return <Navigations />;
   }
