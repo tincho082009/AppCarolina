@@ -63,11 +63,11 @@ export default function Home(props) {
             <Text adjustsFontSizeToFit style={[styles.text, {textAlign: 'left', fontSize: 45}]}>Hola!</Text>
             <Text /><Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30}]}>desde la,</Text>
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:33, color:"#fe9901"}]}>Municipalidad</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30, color:"#fe9901"}]}>Municipalidad</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:38, color:"#666f2d"}]}>de la Carolina</Text>
             <Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30}]}>les damos la</Text>
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:42, color:"#fe9901"}]}>bienvenida</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:39, color:"#fe9901"}]}>bienvenida</Text>
             <Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30}]}>e invitamos a este</Text>
             <Text />
@@ -98,7 +98,7 @@ export default function Home(props) {
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:39, color:"#fe9901"}]}>el audio</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:25, color:"#666f2d"}]}>que se corresponde con la</Text>
             <Text />
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:34}]}>señalización vial</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:32}]}>señalización vial</Text>
             <Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:28, color:"#fe9901"}]}>y apretando el ícono de</Text>
             <Text />
@@ -108,13 +108,13 @@ export default function Home(props) {
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:28, color:"#fe9901"}]}>que acompañan los audios.</Text>
             <Text />
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:35, color:"#666f2d"}]}>Debido a la afluencia</Text>
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:25}]}>considerablemente mayor</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:22}]}>considerablemente mayor</Text>
             <Text/>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:34, color:"#fe9901"}]}>de visitantes desde</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:39, color:"#666f2d"}]}>San Luis a La Carolina</Text>
             <Text/>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:25}]}>las referencias se han </Text>
-            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:33, color: "#fe9901" }]}>establecido en ese sentido,</Text>
+            <Text adjustsFontSizeToFit style={[styles.text, {fontSize:30, color: "#fe9901" }]}>establecido en ese sentido,</Text>
             <Text/>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:36, color:"#666f2d"}]}>en caso de venir</Text>
             <Text adjustsFontSizeToFit style={[styles.text, {fontSize:32}]}>del lado contrario tales</Text>

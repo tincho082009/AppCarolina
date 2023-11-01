@@ -149,9 +149,9 @@ export const audios = [
             }
         ]
      },
-                                    /*KM 58 NEGRA LIBRE*/
+                                    /*KM 60 NEGRA LIBRE*/
      {   
-        nombre: "Km 58 Negra libre",
+        nombre: "Km 60 Negra libre",
         audio:  require('../../assets/audios/03NegraLibre.mp3'),
         descripcion: "(Locutora) A la izquierda se encuentra el salto de la Negra Libre, pero antes don Ignacio nos va a comentar algo…\n\n(D.I) Como dato de referencia,…a la derecha sale el camino a Paso del Rey, donde hay una histórica capilla de mediados del siglo XVIII, el nombre se lo pusieron porque ahí pasó el Marqués de Sobremonte, cuando era una posta “en el Camino del Oro” \n\n(Locutora) Volviendo a nuestra ruta, “el salto de la negra libre” es una cascada de unos 45 metros de altura con un pozo de agua de gran tamaño y una imponente belleza. Es uno de los lugares más elegidos por los amantes del senderismo y la aventura; el recorrido dura más de tres horas a pie sólo de ida y con un grado de dificultad medio-alto, recomendable para personas con muy buen estado físico y acompañados por un guía autorizado por la Secretaría de Turismo ya que el camino no está señalizado y es fácil perderse. Otra opción es hacer la visita a caballo con guías de la zona.\n\nRelato: El Camino de la leyenda, es impreciso, incierto. Como cada pisada que nos acerca al Salto de la Negra Libre. Cuentan que en una redada de malones una esclava negra fue raptada y llevada como cautiva a las tolderías indígenas. Luego de un tiempo, ese destino de opresión encontró un resquicio en el día, una oportunidad para la huida, y huyó. Su espíritu henchido de libertad tomó coraje y un puñado de duraznos silvestres que le servirían de alimento en el fortuito ambular por esas tierras indómitas.\n Vagando a la deriva y sin rumbo, es hallada al fin por sus captores.\n La negra piensa “No hay vuelta atrás” y corre hacia la empinada cascada que la diluye en su nota final: “Libre!!”\n\n Cuentan que los duraznos cayeron con ella. Que el arroyo los esparció. Que luego brotaron. Que no los queman los incendios. Que dan frutos que el atrevido caminante puede saborear, y que, al comienzo del verano, se llenan de un color que no es el negro, sino de un rosado perfume parecido a la libertad.",
         imagenes:[ 
@@ -407,6 +407,25 @@ export const audios = [
             }
         ]
     },
+                                /*KM 73 LA ESCALERILLA*/
+                                {  nombre: "Km 73 La Escalerilla",
+                                audio:  require('../../assets/audios/07Escalerilla.mp3'),
+                                descripcion: "A la derecha podremos observar esta particular formación rocosa granítica que se extiende durante 10km y es llamada 'la Escalerilla', los pinos embellecen el paisaje y fueron plantados en los últimos tiempos. Estamos muy cerquita del “Pinar del Valle” hermoso complejo de cabañas con los mejores servicios de la zona.",
+                                imagenes:[ 
+                                    {
+                                        url: '',
+                                        props: {
+                                            source: require('../../assets/images/Km75LaEscalerilla/Escalerrilla.jpeg')
+                                        }
+                                    }
+                                ],
+                                infoImagenes:[ 
+                                    {
+                                        nombreFoto: "",
+                                        fotografo: "Foto de Marisa Vázquez",
+                                    },
+                                ]
+                            },
                                 /*KM 74 EL RIO*/
      {  nombre: "Km 74 El Río",
         audio:  require('../../assets/audios/07ElRio.mp3'),
@@ -446,25 +465,7 @@ export const audios = [
             }
         ]
     },
-                                    /*KM 75 LA ESCALERILLA*/
-     {  nombre: "Km 75 La Escalerilla",
-        audio:  require('../../assets/audios/07Escalerilla.mp3'),
-        descripcion: "A la derecha podremos observar esta particular formación rocosa granítica que se extiende durante 10km y es llamada 'la Escalerilla', los pinos embellecen el paisaje y fueron plantados en los últimos tiempos. Estamos muy cerquita del “Pinar del Valle” hermoso complejo de cabañas con los mejores servicios de la zona.",
-        imagenes:[ 
-            {
-                url: '',
-                props: {
-                    source: require('../../assets/images/Km75LaEscalerilla/Escalerrilla.jpeg')
-                }
-            }
-        ],
-        infoImagenes:[ 
-            {
-                nombreFoto: "",
-                fotografo: "Foto de Marisa Vázquez",
-            },
-        ]
-    },
+        
                           /*KM 75 POEMA EL VALLE*/
                           {  nombre: "Km 75 Poema 'El valle''",
                           audio:  require('../../assets/audios/08Poesia.mp3'),
@@ -799,7 +800,7 @@ export const audios = [
              ]
          },
                               /*KM 97 BIFURCACION*/
-          {  nombre: "Km 97  Bifurcação",
+          {  nombre: "Km 97  Bifurcación",
              audio:  require('../../assets/audios/19Bifurcacion.mp3'),
              descripcion: "En este punto podremos ir hacia la derecha a La Gruta de Inti Huasi, solo restan 3km o a la izquierda con la misma distancia a la reserva de llamas 'Antu Ruca'. n\ En frente nuestro podemos ver el Cerro 'Inti Huasi' desde su cara posterior. Allí podemos notar una fractura blanca debido a un desplazamiento, que se generó en 1976 por el terremoto de San Juan. A partir de este momento las filtraciones de agua cambiaron las características de la gruta y se llenó de helechos que treparon las pinturas rupestres existentes.",
              imagenes:[ 
