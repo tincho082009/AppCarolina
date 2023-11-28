@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {View, Text, ScrollView, Modal, Pressable, StyleSheet} from "react-native";
-import { Icon } from "react-native-elements/dist/icons/Icon";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import Player from "./Player";
 
@@ -56,14 +56,14 @@ export default function AudioSlider(props){
             }
             <View style={styles.closeContainer}>
                 <Pressable style={styles.closeButton} onPress={() => setVisible(false)}>
-                    <Icon type="material-community" name="close"/>
+                    <Icon name="close" size={25}/>
                 </Pressable>
             </View>
         </Modal>
         <View style={[styles.mainContainer, {backgroundColor: colorStyle}]}>
             <View style={colorStyle === "#f4f0d4" ? {borderWidth: 5, borderColor:"#666f2d", flexDirection:"row", padding: 5} : {borderWidth: 5, borderColor:"#f4f0d4", flexDirection:"row", padding: 5}}>
                 <View style={{justifyContent:"center"}} >
-                    <Icon size={35} style={{backgroundColor:"#fe9901", borderRadius: 20, padding: 2}} type="material-community" color={colorStyle == "#f4f0d4" ? "#666f2d" : colorStyle == "#d8b041"? "#573d00": "#f4f0d4"} name="volume-high" />
+                    <Icon size={35} style={{backgroundColor:"#fe9901", borderRadius: 20, padding: 2}} color={colorStyle == "#f4f0d4" ? "#666f2d" : colorStyle == "#d8b041"? "#573d00": "#f4f0d4"} name="volume-high" />
                 </View>
                 <View style={{flexDirection: "column", justifyContent:"center", width: "78%"}}>
                     <Text adjustsFontSizeToFit style={[styles.headerText, colorStyle == "#d8b041" ? {color: "#f4f0d4"} : {color: "#fe9901"}, {fontSize: currentFont}]}
@@ -80,10 +80,10 @@ export default function AudioSlider(props){
                 </View>
                 <View style={{flexDirection: "column", justifyContent:"center"}}>
                     <Pressable onPress={() => makeVisible("text")} style={{paddingBottom: 10}}>
-                        <Icon name="text-search" type="material-community" color="#666f2d" ></Icon>
+                        <Icon name="text-search" color="#666f2d" size={25}></Icon>
                     </Pressable>
                     <Pressable onPress={() => makeVisible("images")}>
-                        <Icon  name="image" type="material-community" color="#fe9901" ></Icon>
+                        <Icon  name="image" color="#fe9901" size={25}></Icon>
                     </Pressable>
                 </View>
             </View>    

@@ -2,7 +2,7 @@
   "expo": {
     "name": "AppCarolina",
     "slug": "AppCarolina",
-    "version": "2.10",
+    "version": "2.30",
     "orientation": "portrait",
     "icon": "./assets/IsologoAppLaCarolina.png",
     "splash": {
@@ -11,7 +11,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/f8ad5e9c-6f9f-4d5c-b1ee-ac0432682f5f"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -21,7 +22,7 @@
       "supportsTablet": true
     },
     "android": {
-      "versionCode": 3,
+      "versionCode": 8,
       "adaptiveIcon": {
         "foregroundImage": "./assets/IsologoAppLaCarolina.png",
         "backgroundColor": "#FFFFFF"
@@ -30,6 +31,14 @@
     },
     "web": {
       "favicon": "./assets/IsologoAppLaCarolina.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f8ad5e9c-6f9f-4d5c-b1ee-ac0432682f5f"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

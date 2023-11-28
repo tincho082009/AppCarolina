@@ -1,8 +1,9 @@
 import React, {useState, useEffect } from 'react';
 import {View, Text, Pressable, StyleSheet} from 'react-native';
-import { Entypo, MaterialIcons } from '@expo/vector-icons';
 import { Video, Audio } from 'expo-av';
 import Slider from "@react-native-community/slider";
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function Player(props){
     const [isPlaying, setIsPlaying] = useState(false);
@@ -16,13 +17,13 @@ export default function Player(props){
       Audio.setAudioModeAsync({
           allowsRecordingIOS: false,
           staysActiveInBackground: true,
-          interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+          interruptionModeIOS: 1,
           playsInSilentModeIOS: true,
           shouldDuckAndroid: true,
-          interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+          interruptionModeAndroid: 1,
           playThroughEarpieceAndroid: false
       });
-      _loadNewPlaybackInstance()
+      _loadNewPlaybackInstance();
     }, []) 
 
     const _loadNewPlaybackInstance = async (playing) => {
