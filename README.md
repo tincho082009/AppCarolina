@@ -1,0 +1,1 @@
+Este proyecto fue desarrollado para la Municipalidad de La Carolina, San Luis. Consiste en una aplicación móvil que funciona como audioguía turística, ofreciendo imágenes, audios e información detallada sobre diversos puntos de interés de la localidad. Está construida con React Native y Expo, y actualmente se encuentra disponible en la Google Play Store.
