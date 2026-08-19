@@ -1,217 +1,191 @@
-import React, {useState, useEffect } from 'react';
-import {View, Text, Pressable, StyleSheet} from 'react-native';
-import { Video, Audio } from 'expo-av';
+import React, { useState, useEffect } from "react";
+import { View, Text, Pressable, StyleSheet } from "react-native";
+import {
+  setAudioModeAsync,
+  useAudioPlayer,
+  useAudioPlayerStatus,
+} from "expo-audio";
 import Slider from "@react-native-community/slider";
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from "react-native-vector-icons/Entypo";
+import MaterialIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default function Player(props){
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [playbackInstancePosition, setPlaybackInstancePosition] = useState(null);
-    const [playbackInstanceDuration, setPlaybackInstanceDuration] = useState(0);
-    const [isSeeking, setIsSeeking] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    const [playbackInstance, setPlaybackInstance] = useState(null);
+export default function Player(props) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isSeeking, setIsSeeking] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const player = useAudioPlayer(props.track);
+  const playerStatus = useAudioPlayerStatus(player);
 
-    useEffect(() => {
-      Audio.setAudioModeAsync({
-          allowsRecordingIOS: false,
-          staysActiveInBackground: true,
-          interruptionModeIOS: 1,
-          playsInSilentModeIOS: true,
-          shouldDuckAndroid: true,
-          interruptionModeAndroid: 1,
-          playThroughEarpieceAndroid: false
-      });
-      _loadNewPlaybackInstance();
-    }, []) 
+  useEffect(() => {
+    setAudioModeAsync({
+      allowsRecordingIOS: false,
+      staysActiveInBackground: true,
+      interruptionModeIOS: 1,
+      playsInSilentModeIOS: true,
+      shouldDuckAndroid: true,
+      interruptionModeAndroid: 1,
+      playThroughEarpieceAndroid: false,
+    });
 
-    const _loadNewPlaybackInstance = async (playing) => {
-      if (playbackInstance != null) {
-        await playbackInstance.unloadAsync();
-        setPlaybackInstance(null);
-      }
-  
-      const source = props.track;
-      const initialStatus = {
-        shouldPlay: playing
-      };
-      
-      const {sound, status} = await Audio.Sound.createAsync(
-      source,
-      initialStatus,
-      _onPlaybackStatusUpdate
-      );
-
-      setPlaybackInstance(sound)
-      _updateScreenForLoading(false);
+    if (player != null) {
+      player.remove();
     }
+  }, []);
 
-    const _updateScreenForLoading = (isLoading) => {
-      if (isLoading) {
-        setIsPlaying(false);
-        setIsLoading(true);
-        setPlaybackInstanceDuration(null);
-        setPlaybackInstancePosition(null);
-      } else {
+  useEffect(() => {
+    if (player != null) {
+      if (player.isLoaded) {
         setIsLoading(false);
+      } else {
+        console.log(`FATAL PLAYER ERROR`);
       }
     }
+  }, [player]);
 
-    const _onPlaybackStatusUpdate = status => {
-      if (status.isLoaded) {
-          setPlaybackInstanceDuration(status.durationMillis)
-          setPlaybackInstancePosition(status.positionMillis)
-          setIsPlaying(status.isPlaying)
+  useEffect(() => {
+    setIsPlaying(player.playing);
+  }, [player.playing]);
+
+  const _onPlayPausePressed = () => {
+    if (player != null) {
+      if (player.playing) {
+        player.pause();
       } else {
-        if (status.error) {
-          console.log(`FATAL PLAYER ERROR: ${status.error}`);
-        }
+        player.play();
       }
+    }
   };
 
-    const _onPlayPausePressed = () => {
-      if (playbackInstance != null) {
-        if (isPlaying) {
-          playbackInstance.pauseAsync();
-        } else {
-          playbackInstance.playAsync();
-        }
+  const _onSeekSliderValueChange = () => {
+    if (player != null && !isSeeking) {
+      setIsSeeking(true);
+
+      player.pause();
+    }
+  };
+
+  const _onSeekSliderSlidingComplete = async (value) => {
+    if (player != null) {
+      setIsSeeking(false);
+      const seekPosition = value * player.duration;
+
+      player.seekTo(seekPosition);
+      player.play();
+    }
+  };
+
+  const _getSeekSliderPosition = () => {
+    if (player != null && player.currentTime / player.duration < 1) {
+      return player.currentTime / player.duration;
+    }
+
+    player.seekTo(0);
+    player.play();
+    player.pause();
+
+    return 0;
+  };
+
+  const _getTimestamp = () => {
+    if (
+      player != null &&
+      player.duration != null &&
+      player.currentTime != null
+    ) {
+      return `${_getMMSSFromSec(player.currentTime)} / ${_getMMSSFromSec(
+        player.duration
+      )}`;
+    }
+    return "";
+  };
+
+  const _getMMSSFromSec = (millis) => {
+    const totalSeconds = millis;
+    const seconds = Math.floor(totalSeconds % 60);
+    const minutes = Math.floor(totalSeconds / 60);
+
+    const padWithZero = (number) => {
+      const string = number.toString();
+      if (number < 10) {
+        return "0" + string;
       }
+      return string;
     };
+    return padWithZero(minutes) + ":" + padWithZero(seconds);
+  };
 
-    const _onSeekSliderValueChange = value => {
-      if (playbackInstance != null && !isSeeking) {
-          setIsSeeking(true)
-          playbackInstance.pauseAsync();
-        }
-    };
-
-    const _onSeekSliderSlidingComplete = async value => {
-      if (playbackInstance != null) {
-        setIsSeeking(false);
-        const seekPosition = value * playbackInstanceDuration;
-        playbackInstance.playFromPositionAsync(seekPosition);
-      }
-    }
-
-    const _getSeekSliderPosition = () => {
-      if (
-          playbackInstance != null &&
-          playbackInstancePosition != null &&
-          playbackInstanceDuration != null
-        ) {
-          return (
-              playbackInstancePosition /
-            playbackInstanceDuration
-          );
-        }
-        return 0;
-    }
-
-    const _getTimestamp = () => {
-        if (
-          playbackInstance != null &&
-          playbackInstancePosition != null &&
-          playbackInstanceDuration != null
-        ) {
-          return `${_getMMSSFromMillis(
-            playbackInstancePosition
-          )} / ${_getMMSSFromMillis(playbackInstanceDuration)}`;
-        }
-        return "";
-    }
-
-    const _getMMSSFromMillis = (millis) => {
-      const totalSeconds = millis / 1000;
-      const seconds = Math.floor(totalSeconds % 60);
-      const minutes = Math.floor(totalSeconds / 60);
-
-      const padWithZero = number => {
-          const string = number.toString();
-          if (number < 10) {
-          return "0" + string;
-          }
-          return string;
-      };
-      return padWithZero(minutes) + ":" + padWithZero(seconds);
-    }
-
-
-    return (
-      <>
+  return (
+    <>
       <View style={styles.container}>
-          <Video 
-            resizeMode={Video.RESIZE_MODE_CONTAIN}           
-            onPlaybackStatusUpdate={() => _onPlaybackStatusUpdate()}
-            style={styles.audioElement} 
-            useNativeControls={false}
-          />
-          <Pressable onPress={() => _onPlayPausePressed()} style={styles.playButton}  disabled={isLoading}>
-              {isPlaying
-              ? <MaterialIcons name="pause" size={30} color="#666f2d" />
-              : <Entypo name="controller-play" size={30} color="#666f2d" />
-              }
-          </Pressable>
-          <Slider
-            thumbTintColor="#666f2d"
-            maximumTrackTintColor="#666f2d"
-            minimumTrackTintColor="#666f2d"
-            style={styles.slider}
-              value={_getSeekSliderPosition()}
-              onValueChange={() => _onSeekSliderValueChange()}
-              onSlidingComplete={(value) => _onSeekSliderSlidingComplete(value)}
-              disabled={isLoading}
-          />        
+        <Pressable
+          onPress={() => _onPlayPausePressed()}
+          style={styles.playButton}
+          disabled={isLoading}
+        >
+          {isPlaying ? (
+            <MaterialIcons name="pause" size={30} color="#666f2d" />
+          ) : (
+            <Entypo name="controller-play" size={30} color="#666f2d" />
+          )}
+        </Pressable>
+        <Slider
+          thumbTintColor="#666f2d"
+          maximumTrackTintColor="#666f2d"
+          minimumTrackTintColor="#666f2d"
+          minimumValue={0}
+          maximumValue={1}
+          style={styles.slider}
+          value={_getSeekSliderPosition()}
+          //onValueChange={() => _onSeekSliderValueChange()}
+          onSlidingStart={() => _onSeekSliderValueChange()}
+          onSlidingComplete={(value) => _onSeekSliderSlidingComplete(value)}
+          disabled={isLoading}
+        />
       </View>
       <View style={styles.timestampRow}>
-          <Text
-          style={styles.text}
-          >
-          {_getTimestamp()}
-          </Text>
+        <Text style={styles.text}>{_getTimestamp()}</Text>
       </View>
-      </>
-    );
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 0,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      paddingLeft: 8,
-      paddingRight: 8,
-      height: 35
-    },
-    playButton: {
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingRight: 20,
-      zIndex: 5
-    },
-    slider: {
-      flex: 8,
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignItems: 'center'
-    },
-    timestampRow: {
-        flex: 1,
-        flexDirection: "row",
-        alignSelf: "flex-end",
-        paddingRight: 20,
-        minHeight: 14
-      },
-      text: {
-        color: "#666f2d",
-        fontSize: 12
-      },
-    audioElement: {
-        height: 0,
-        width: 0,
-    }
+  container: {
+    flex: 0,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingLeft: 8,
+    paddingRight: 8,
+    height: 35,
+  },
+  playButton: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingRight: 20,
+    zIndex: 5,
+  },
+  slider: {
+    flex: 8,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  timestampRow: {
+    flex: 1,
+    flexDirection: "row",
+    alignSelf: "flex-end",
+    paddingRight: 20,
+    minHeight: 14,
+  },
+  text: {
+    color: "#666f2d",
+    fontSize: 12,
+  },
+  audioElement: {
+    height: 0,
+    width: 0,
+  },
 });

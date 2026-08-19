@@ -9,29 +9,22 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import AudioList from "../components/AudioList";
-import { Audio } from "expo-av";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useAudioPlayer } from "expo-audio";
+
+const audioSource = require("../../assets/audios/00intro.mp3");
 
 export default function Home(props) {
   const [modalVisible, setModalVisible] = useState(true);
-  const [sound, setSound] = useState();
-
-  async function playSound() {
-    const { sound } = await Audio.Sound.createAsync(
-      require("../../assets/audios/00intro.mp3")
-    );
-    setSound(sound);
-
-    await sound.playAsync();
-  }
+  const player = useAudioPlayer(audioSource);
 
   useEffect(() => {
-    playSound();
+    player.play();
   }, []);
 
   const closeModal = () => {
-    if (sound) {
-      sound.unloadAsync();
+    if (player) {
+      player.pause();
       setModalVisible(!modalVisible);
     }
   };
