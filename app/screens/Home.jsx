@@ -7,7 +7,7 @@ import {
   ScrollView,
   Text,
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import AudioList from "../components/AudioList";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useAudioPlayer } from "expo-audio";
@@ -208,7 +208,7 @@ export default function Home(props) {
               closeModal();
             }}
           >
-            <Icon name="close" size={25} />
+            <MaterialCommunityIcons name="close" size={25} />
           </Pressable>
         </View>
       </Modal>
@@ -259,8 +259,8 @@ const styles = StyleSheet.create({
   buttonClose: {
     width: 40,
     height: 40,
-    marginRight: 15,
-    marginTop: 15,
+    marginRight: 25,
+    marginTop: 70,
     borderRadius: 20,
     padding: 8,
     backgroundColor: "#909497",

@@ -3,7 +3,7 @@ import Mapas from "../screens/Mapas";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
-import { Icon } from "react-native-elements";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Creditos from "../screens/Creditos";
 
 const Tab = createBottomTabNavigator();
@@ -23,12 +23,11 @@ export default function Navigation() {
             tabBarInactiveTintColor: "#666f2d",
             tabBarIcon: ({ color, size }) => {
               return (
-                <Icon
-                  type="material-community"
+                <MaterialCommunityIcons
                   size={size}
                   color={"#666f2d"}
                   name="volume-high"
-                ></Icon>
+                />
               );
             },
             headerShown: false,
@@ -45,12 +44,11 @@ export default function Navigation() {
             tabBarInactiveTintColor: "#666f2d",
             tabBarIcon: ({ color, size }) => {
               return (
-                <Icon
-                  type="material-community"
+                <MaterialCommunityIcons
                   size={size}
                   color={"#666f2d"}
                   name="map-marker"
-                ></Icon>
+                />
               );
             },
             headerShown: false,
@@ -67,12 +65,11 @@ export default function Navigation() {
             tabBarInactiveTintColor: "#666f2d",
             tabBarIcon: ({ color, size }) => {
               return (
-                <Icon
-                  type="material-community"
+                <MaterialCommunityIcons
                   size={size}
                   color={"#666f2d"}
                   name="comment-text-outline"
-                ></Icon>
+                />
               );
             },
             headerShown: false,

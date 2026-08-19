@@ -6,8 +6,8 @@ import {
   useAudioPlayerStatus,
 } from "expo-audio";
 import Slider from "@react-native-community/slider";
-import Entypo from "react-native-vector-icons/Entypo";
-import MaterialIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import EntypoCommunityIcons from "@expo/vector-icons/Entypo";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function Player(props) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,13 +18,11 @@ export default function Player(props) {
 
   useEffect(() => {
     setAudioModeAsync({
-      allowsRecordingIOS: false,
+      allowsRecording: false,
+      playsInSilentMode: true,
+      playThroughEarpiece: false,
       staysActiveInBackground: true,
-      interruptionModeIOS: 1,
-      playsInSilentModeIOS: true,
-      shouldDuckAndroid: true,
-      interruptionModeAndroid: 1,
-      playThroughEarpieceAndroid: false,
+      interruptionMode: 'duckOthers',
     });
 
     if (player != null) {
@@ -123,9 +121,9 @@ export default function Player(props) {
           disabled={isLoading}
         >
           {isPlaying ? (
-            <MaterialIcons name="pause" size={30} color="#666f2d" />
+            <MaterialCommunityIcons name="pause" size={30} color="#666f2d" />
           ) : (
-            <Entypo name="controller-play" size={30} color="#666f2d" />
+            <EntypoCommunityIcons name="controller-play" size={30} color="#666f2d" />
           )}
         </Pressable>
         <Slider
